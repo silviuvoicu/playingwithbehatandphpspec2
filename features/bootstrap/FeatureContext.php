@@ -55,7 +55,7 @@ class FeatureContext extends BehatContext
      */
     public function theGameShouldSay($message)
     {
-       assert(in_array($message ,$this->message));
+       if(!in_array($message ,$this->message)) throw new \Exception("Faild What it should say");
     }
 
 
