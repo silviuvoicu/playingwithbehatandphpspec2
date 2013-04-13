@@ -1,5 +1,4 @@
 <?php
-
 use Behat\Behat\Context\ClosuredContextInterface,
     Behat\Behat\Context\TranslatedContextInterface,
     Behat\Behat\Context\BehatContext,
@@ -10,8 +9,9 @@ use Behat\Gherkin\Node\PyStringNode,
 //
 // Require 3rd-party libraries here:
 //
-   require_once 'PHPUnit/Autoload.php';
-   require_once 'PHPUnit/Framework/Assert/Functions.php';
+  
+//   require_once 'PHPUnit/Autoload.php';
+//   require_once 'PHPUnit/Framework/Assert/Functions.php';
 //
 
 /**
@@ -28,36 +28,11 @@ class FeatureContext extends BehatContext
      */
     public function __construct(array $parameters)
     {
-        // Initialize your context here
+         $this->useContext('start_game', new StartGameContext());
+         $this->useContext('submits_guess', new SubmitsGuessContext());
     }
 
- /**
-     * @Given /^I am not yet playing$/
-     */
-    public function iAmNotYetPlaying()
-    {
-       
-    }
-
-    /**
-     * @When /^I start a new game$/
-     */
-    public function iStartANewGame()
-    {   
-        $message= array('Welcome to Mastermind!', 'Enter guess:');
-        $game = new Game($message);
-        $this->message = $game->start();
-    
-    }
-
-    /**
-     * @Then /^the game should say "([^"]*)"$/
-     */
-    public function theGameShouldSay($message)
-    {
-       if(!in_array($message ,$this->message)) throw new \Exception("Faild What it should say");
-    }
-
+ 
 
 //
 // Place your definition and hook methods here:

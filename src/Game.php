@@ -1,5 +1,4 @@
 <?php
-
 class Game
 {
     private  $message;
