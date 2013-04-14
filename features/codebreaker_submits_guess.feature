@@ -5,12 +5,12 @@
   the position of a peg in the secret code, a
   white peg is added to the mark.
 
-  Scenario Template: submit guess
-    Given the secret code is <code>
-    When I guess <guess>
-    Then the mark should be <mark>
+  Scenario Outline: submit guess
+    Given the secret code is "<code>"
+    When I guess "<guess>"
+    Then the mark should be "<mark>"
 
-  Scenarios: 
+  Examples: 
     | code    | guess   | mark |
     | r g y c | r g y c | bbbb |
     | r g y c | r g c y | bbww |
