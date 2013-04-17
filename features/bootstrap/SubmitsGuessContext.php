@@ -2,20 +2,34 @@
 use Behat\Behat\Context\BehatContext;
 use Behat\Behat\Exception\PendingException;
 
+require_once 'PHPUnit/Autoload.php';
+require_once 'PHPUnit/Framework/Assert/Functions.php';
+
 class SubmitsGuessContext extends BehatContext 
 {
+   /** 
+     *    Game $game 
+    */ 
+   private $game; 
 
     public function __construct()
     {
         // do subcontext initialization
     }
 
+   private function getTheGame()
+   {
+      $this->game = $this->getMainContext()->getSubcontext('start_game')->iStartANewGame();
+   }
+
    /**
      * @Given /^the secret code is "([^"]*)"$/
      */
     public function theSecretCodeIs($code)
     {
-        throw new PendingException();
+        $this->getTheGame();
+        $splitCode = explode(" ",$code);
+        $this->game->start($splitCode);
     }
 
     /**
@@ -23,7 +37,9 @@ class SubmitsGuessContext extends BehatContext
      */
     public function iGuess($quess)
     {
-        throw new PendingException();
+        $splitQuess = explode(" ",$quess);
+        $this->game->setGuess($splitQuess);
+        
     }
 
     /**
@@ -31,7 +47,7 @@ class SubmitsGuessContext extends BehatContext
      */
     public function theMarkShouldBe($mark)
     {
-        throw new PendingException();
+        assertEquals($mark,$this->game->result());
     }
 
 

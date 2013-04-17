@@ -11,26 +11,22 @@
     Then the mark should be "<mark>"
 
   Examples: 
+    
     | code    | guess   | mark |
     | r g y c | r g y c | bbbb |
     | r g y c | r g c y | bbww |
     | r g y c | y r g c | bwww |
     | r g y c | c r g y | wwww |
-
-
-   
+ 
     | r g y c | w g y c | bbb  |
     | r g y c | w r y c | bbw  |
     | r g y c | w r g c | bww  |
     | r g y c | w r g y | www  |
-
-
-    
+ 
     | r g y c | w g w c | bb   |
     | r g y c | w r w c | bw   |
     | r g y c | g w c w | ww   |
-
-  
    
     | r g y c | r w w w | b    |
     | r g y c | w w r w | w    |
+

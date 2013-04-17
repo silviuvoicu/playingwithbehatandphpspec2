@@ -5,6 +5,7 @@ use Behat\Behat\Context\BehatContext;
 
 class StartGameContext extends BehatContext 
 {
+     private $message;    
 
     public function __construct()
     {
@@ -21,12 +22,14 @@ class StartGameContext extends BehatContext
 
     /**
      * @When /^I start a new game$/
+     * @param  Game   $game   
      */
     public function iStartANewGame()
     {   
         $message= array('Welcome to Mastermind!', 'Enter guess:');
         $game = new Game($message);
-        $this->message = $game->start();
+        $this->message = $game->start(null);
+        return $game;
     
     }
 

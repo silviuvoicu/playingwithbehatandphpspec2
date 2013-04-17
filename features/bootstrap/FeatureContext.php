@@ -19,7 +19,7 @@ use Behat\Gherkin\Node\PyStringNode,
  */
 class FeatureContext extends BehatContext
 {    
-    private $message;
+   
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
